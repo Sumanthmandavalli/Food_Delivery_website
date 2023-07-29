@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignIn/SignUp - BiteBuggy</title>
+    
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <main>
+        <div class="box">
+            <div class="inner-box">
+                <div class="forms-wrap">
+                    <form action="index2.html" autocomplete="off" class="sign-in-form">
+                        <div class="logo-section">
+                            <img src="/baby-carriage-solid.svg" alt="bitebuggy">
+                            <h4>BiteBuggy</h4>
+                        </div>
+
+                        <div class="heading">
+                            <h2>Welcome Back</h2>
+                            <h6>Not registered yet?</h6>
+                            <a href="#" class="toggle">Sign up</a>
+                        </div>
+
+                        <div class="actual-form">
+                            <div class="input-wrap">
+                                <input type="email" class="input-field" id="emailSignInEl" minlength="4" autocomplete="off" required>
+                                <label >Email</label>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="password" class="input-field" id="passSignInEl" minlength="4" autocomplete="off" required>
+                                <label >Password</label>
+                            </div>
+                            <input type="button" value="Sign In" class="sign-btn" id="signInBtn">
+
+                            <p class="text">
+                                Forgotten your password or your login details?
+                                <a href="#"> Get Help </a>Signing In
+                            </p>
+                        </div>
+                    </form>
+
+                    <form action="index2.html" autocomplete="off" class="sign-up-form">
+                        <div class="logo-section">
+                            <img src="/baby-carriage-solid.svg" alt="bitebuggy">
+                            <h4>BiteBuggy</h4>
+                        </div>
+
+                        <div class="heading">
+                            <h2>Get Started</h2>
+                            <h6>Already have an account?</h6>
+                            <a href="#" class="toggle">Sign in</a>
+                        </div>
+
+                        <div class="actual-form">
+                            <div class="input-wrap">
+                                <input type="text" class="input-field"  minlength="4" autocomplete="off" required>
+                                <label >Name</label>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="email" class="input-field" id="emailEl" minlength="4" autocomplete="off" required>
+                                <label >Email</label>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="password" class="input-field" id="passwordEl"  minlength="4" autocomplete="off" required>
+                                <label >Password</label>
+                            </div>
+                            <input type="button" value="Sign Up" class="sign-btn" id="signUpBtn">
+
+                            <p class="text">
+                                By signing up, I agree to the <a href="">Terms of Services</a> and <a href="">Privacy Policy</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="carousel">
+                    <div class="images-wrapper">
+                        <img src="/BB_wallpaper1.png" class="image img-1 show">
+                        <img src="/BB_wallpaper2.png" class="image img-2">
+                        <img src="carosel-img1.jpg" class="image img-3">
+                        <img src="/bb_wallpaper3.png" class="image img-4">
+
+                    </div>
+
+                    <div class="text-slider">
+                        <div class="text-wrap">
+                            <div class="text-group">
+                                <h2>Enjoy Delicious Food</h2>
+                                <h2>Customize as you like</h2>
+                                <h2>Fast Delivery</h2>
+                                <h2>More Discounts and Vouchers</h2>
+                            </div>
+                        </div>
+
+                        <div class="bullets">
+                            <span class="active" data-value="1"></span>
+                            <span data-value="2"></span>
+                            <span data-value="3"></span>
+                            <span data-value="4"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyCJ7n-A2z-BqI3w4AzN34MkN2gzj55xgeM",
+          authDomain: "bitebuggy-97bba.firebaseapp.com",
+          projectId: "bitebuggy-97bba",
+          storageBucket: "bitebuggy-97bba.appspot.com",
+          messagingSenderId: "293589028587",
+          appId: "1:293589028587:web:73bb3b4db15679c01b38ae",
+          measurementId: "G-NK9VDX62MQ"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+
+        document.getElementById("signUpBtn").addEventListener('click',function(){
+            var email = document.getElementById("emailEl").value;
+            var password = document.getElementById("passwordEl").value;
+
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                // alert('Created!');
+                
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorCode + errorMessage);
+            });
+
+        })
+
+        document.getElementById("signInBtn").addEventListener('click',function(){
+            var email = document.getElementById("emailSignInEl").value;
+            var password = document.getElementById("passSignInEl").value;
+
+            signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user);
+                alert(user.email + " Login Successfull ");
+                
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode + errorMessage);
+                alert(errorMessage);
+            });
+
+        })
+
+    </script>
+
+    <script src="script2.js"></script>
+</body>
+
+
+
+</html>

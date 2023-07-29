@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/0175ddf0d9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="locationPage.css">
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+
+        :root{
+            --orange:orange;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            flex-direction: row;
+        }
+
+        .aloo-tikki-img {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+
+        .image-wrapper {
+            width: 45%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .section2 {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-wrapper">
+            <img src="/aloo_tikki.jfif" class="aloo-tikki-img">
+        </div>
+        <div class="section2">
+            <h1 class="heading">"Getting hungry? Tell us where to deliver your favorite dishes!"</h1>
+            <input type="search" placeholder="Enter street address or zip code" class="input-field" >
+            <i class="fa-solid fa-compass" style="color: #e0621f;"></i>
+            <div>
+                <button class="search-address-btn">Search Nearby</button>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
